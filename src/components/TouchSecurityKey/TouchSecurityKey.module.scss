@@ -1,0 +1,197 @@
+.browserPopup {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2000;
+  width: 320px;
+  margin-top: 8px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, sans-serif;
+}
+
+.browserPopupContent {
+  background-color: #2b2b2b;
+  color: white;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+
+  p {
+    margin: 12px 0;
+    font-size: 16px;
+    color: #e0e0e0;
+  }
+}
+
+.popupHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 18px;
+  margin-bottom: 4px;
+
+  span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+}
+
+.securityKeyIcon {
+  width: 20px;
+  height: 32px;
+  background-color: #4285f4;
+  border-radius: 4px;
+  position: relative;
+
+  &:after {
+    content: "";
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background-color: #fff;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.popupActions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
+
+  button {
+    background: none;
+    border: none;
+    color: #8ab4f8;
+    font-size: 13px;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 4px;
+
+    &:hover {
+      background-color: rgba(138, 180, 248, 0.1);
+    }
+  }
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #e0e0e0;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin-left: 4px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.fullscreenMessage {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: white;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: Calibri, sans-serif;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 400px;
+  padding: 24px;
+
+  h1 {
+    font-size: 24px;
+    font-weight: normal;
+    margin: 0 0 8px;
+    color: #202124;
+  }
+
+  p {
+    font-size: 16px;
+    color: #5f6368;
+    margin: 0 0 32px;
+  }
+}
+
+.securityKeyGraphic {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin: 24px 0 40px;
+}
+
+.keyIcon {
+  width: 60px;
+  height: 60px;
+  background-color: #e8eaed;
+  border-radius: 8px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  &:after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #5f6368;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.loadingDot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: #1a73e8;
+  border-radius: 50%;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-10px);
+  }
+}
+
+.helpButton {
+  background: none;
+  border: none;
+  color: #1a73e8;
+  font-size: 14px;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 4px;
+
+  &:hover {
+    background-color: rgba(26, 115, 232, 0.1);
+  }
+}

@@ -1,0 +1,164 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 5vh 5vw;
+}
+
+.modal {
+  background: white;
+  border-radius: 8px;
+  width: 90%;
+  height: 90%;
+  max-width: 90ch;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+
+  h2 {
+    margin: 0;
+    padding: 1.5rem;
+    border-bottom: 1px solid #eee;
+    font-size: 1.5rem;
+    color: #1a1a1a;
+  }
+}
+
+.content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.5rem;
+  line-height: 1.6;
+  color: #333;
+  font-size: 0.9375rem;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+    
+    &:hover {
+      background: #666;
+    }
+  }
+
+  h3 {
+    color: #1a1a1a;
+    margin: 1.5rem 0 1rem;
+    font-size: 1.125rem;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  p {
+    margin: 0.75rem 0;
+  }
+}
+
+.bottomIndicator {
+  position: sticky;
+  bottom: 0;
+  background: linear-gradient(transparent, white);
+  padding: 1rem;
+  text-align: center;
+  margin: 1rem -1.5rem -1.5rem;
+
+  p {
+    margin: 0;
+    color: #666;
+    font-style: italic;
+  }
+}
+
+.actions {
+  padding: 1.5rem;
+  border-top: 1px solid #eee;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+
+  button {
+    padding: 0.75rem 2rem;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    font-size: 0.875rem;
+
+    &:hover:not(:disabled) {
+      transform: translateY(-1px);
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+
+  .decline {
+    background-color: #f8f8f8;
+    color: #666;
+    border: 1px solid #ddd;
+
+    &:hover:not(:disabled) {
+      background-color: #eee;
+      color: #333;
+    }
+  }
+
+  .accept {
+    background-color: #2196F3;
+    color: white;
+
+    &:hover:not(:disabled) {
+      background-color: darken(#2196F3, 10%);
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .modal {
+    h2 {
+      padding: 1rem;
+    }
+  }
+
+  .content {
+    padding: 1rem;
+  }
+
+  .actions {
+    padding: 1rem;
+    flex-direction: column;
+    
+    button {
+      width: 100%;
+    }
+
+    .decline {
+      order: 2;
+    }
+
+    .accept {
+      order: 1;
+    }
+  }
+}

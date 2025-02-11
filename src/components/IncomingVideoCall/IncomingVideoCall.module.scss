@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;500;600&display=swap');
+
+.container {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 2000;
+  transform: translateY(-150%);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  &.animate {
+    transform: translateY(0);
+    animation: shake 1s cubic-bezier(0.36, 0.07, 0.19, 0.97) infinite;
+  }
+}
+
+.notificationContent {
+  background: rgba(28, 28, 30, 0.9);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 16px;
+  padding: 16px;
+  width: 320px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.callInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(45deg, #34C759, #30D158);
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+.callerInfo {
+  flex: 1;
+}
+
+.callerName {
+  color: white;
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.callType {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.actionButton {
+  flex: 1;
+  border: none;
+  padding: 8px;
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.2s;
+  font-family: inherit;
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+.buttonIcon {
+  font-size: 20px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttonText {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.declineButton {
+  background: #FF453A;
+  color: white;
+
+  &:hover {
+    background: #FF594F;
+  }
+}
+
+.acceptButton {
+  background: #34C759;
+  color: white;
+
+  &:hover {
+    background: #30D158;
+  }
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translate(-1px, 0);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translate(2px, 0);
+  }
+}
