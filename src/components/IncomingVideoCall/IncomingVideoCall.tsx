@@ -56,14 +56,14 @@ export const IncomingVideoCall = ({ onRemove }: IncomingVideoCallProps) => {
         </div>
 
         <div className={styles.actions}>
-          <button 
+          <button
             className={`${styles.actionButton} ${styles.declineButton}`}
             onClick={handleDecline}
           >
             <span className={styles.buttonIcon}>✕</span>
             <span className={styles.buttonText}>Decline</span>
           </button>
-          <button 
+          <button
             className={`${styles.actionButton} ${styles.acceptButton}`}
             onClick={handleAccept}
           >

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "./VideoAd.module.scss";
+import video from "./memecoin.mp4";
 
 interface VideoAdProps {
   onRemove: () => void;
@@ -28,13 +29,10 @@ export const VideoAd = ({ onRemove }: VideoAdProps) => {
     <div className={styles.container}>
       <div className={styles.videoContent}>
         <div className={styles.gradientOverlay} />
-        
+
         {/* Video Background */}
         <video autoPlay muted loop className={styles.video}>
-          <source
-            src="https://player.vimeo.com/external/499503018.sd.mp4?s=8ca13c6c15e10054ec514b69bb2a28d&profile_id=164&oauth2_token_id=57447761"
-            type="video/mp4"
-          />
+          <source src={video} type="video/mp4" />
         </video>
 
         {/* Ad Content */}
@@ -48,11 +46,11 @@ export const VideoAd = ({ onRemove }: VideoAdProps) => {
                 </button>
               ) : (
                 <div className={styles.countdown}>
-                  <div 
+                  <div
                     className={styles.progressBar}
-                    style={{ 
+                    style={{
                       transform: `scaleX(${countdown / 10})`,
-                    }} 
+                    }}
                   />
                   <span>Skip ad in {countdown}</span>
                 </div>
@@ -66,7 +64,7 @@ export const VideoAd = ({ onRemove }: VideoAdProps) => {
               <br />
               Turn $100 into $1,000,000
             </h1>
-            
+
             <div className={styles.features}>
               <div className={styles.feature}>
                 <span className={styles.emoji}>🚀</span>

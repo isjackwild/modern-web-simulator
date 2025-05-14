@@ -2,13 +2,13 @@
   position: fixed;
   top: 0;
   right: 0;
-  width: 250px;
+  width: 300px;
   height: 100vh;
   background: white;
   z-index: 900;
   transition: transform 0.3s ease-out;
   overflow: hidden;
-  font-family: 'Fredoka', sans-serif;
+  font-family: "Fredoka", sans-serif;
 
   &.closing {
     transform: translateX(100%);
@@ -80,19 +80,18 @@
   letter-spacing: 1.5px;
   font-weight: 600;
   color: #ffff00;
-  text-shadow: 1px 1px 0 rgba(0,0,0,0.3);
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.3);
 }
 
 .timerValue {
   font-size: 42px;
-  font-family: 'Permanent Marker', cursive;
+  font-family: "Permanent Marker", cursive;
   color: #ffff00;
-  text-shadow: 
-    2px 2px 0 rgba(0,0,0,0.3),
-    -1px -1px 0 rgba(255,255,255,0.2);
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3),
+    -1px -1px 0 rgba(255, 255, 255, 0.2);
   line-height: 1;
   padding: 4px;
-  
+
   &::after {
     content: "LEFT";
     display: block;
@@ -100,7 +99,7 @@
     text-align: center;
     letter-spacing: 3px;
     margin-top: 4px;
-    font-family: 'Fredoka', sans-serif;
+    font-family: "Fredoka", sans-serif;
     opacity: 0.9;
   }
 }
@@ -149,7 +148,7 @@
 .kidsGo {
   color: #e4003f;
   font-size: 28px;
-  font-family: 'Permanent Marker', cursive;
+  font-family: "Permanent Marker", cursive;
   line-height: 1.1;
   transform: rotate(-2deg);
   text-shadow: 2px 2px 0 #ffff00;
@@ -181,14 +180,14 @@
   text-align: center;
   margin: 12px 0;
   position: relative;
-  
+
   &::before {
     content: "ONLY";
     position: absolute;
     top: -12px;
     left: 50%;
     transform: translateX(-50%) rotate(-5deg);
-    font-family: 'Permanent Marker', cursive;
+    font-family: "Permanent Marker", cursive;
     font-size: 16px;
     color: #e4003f;
   }
@@ -196,12 +195,12 @@
 
 .amount {
   font-size: 42px;
-  font-family: 'Permanent Marker', cursive;
+  font-family: "Permanent Marker", cursive;
   color: #1a1a1a;
   line-height: 1;
   display: inline-block;
   transform: rotate(-1deg);
-  
+
   &::first-letter {
     font-size: 32px;
     vertical-align: super;
@@ -227,7 +226,7 @@
     font-size: 14px;
     color: #444;
     font-weight: 600;
-    
+
     &::before {
       color: #00aa44;
       font-weight: bold;
@@ -241,12 +240,12 @@
   border: none;
   padding: 14px;
   border-radius: 25px;
-  font-family: 'Permanent Marker', cursive;
+  font-family: "Permanent Marker", cursive;
   font-size: 20px;
   cursor: pointer;
   transition: all 0.2s;
   margin-top: auto;
-  text-shadow: 1px 1px 0 rgba(0,0,0,0.2);
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
   letter-spacing: 1px;
 
   &:hover {
