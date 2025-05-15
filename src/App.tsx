@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo } from "react";
 import { CookieChoices } from "./components/CookieChoices/CookieChoices";
 import { TermsAndConditions } from "./components/TermsAndConditions/TermsAndConditions";
 import { TouchSecurityKey } from "./components/TouchSecurityKey/TouchSecurityKey";
@@ -12,6 +12,7 @@ import { IncomingVideoCall } from "./components/IncomingVideoCall/IncomingVideoC
 import { InstallDependencies } from "./components/InstallDependencies/InstallDependencies";
 import { AdminPassword } from "./components/AdminPassword/AdminPassword";
 import { GroupChat } from "./components/GroupChat/GroupChat";
+import { WhatsNew } from "./components/WhatsNew/WhatsNew";
 import styles from "./App.module.scss";
 
 enum Interruption {
@@ -29,6 +30,7 @@ enum Interruption {
   RELAUNCH_BROWSER,
   EMAIL_NOTIFICATION,
   SCREENSAVER,
+  WHATS_NEW,
 }
 
 const INTERRUPTION_ORDER = [
@@ -45,16 +47,17 @@ const INTERRUPTION_ORDER = [
   Interruption.EMAIL_NOTIFICATION,
   Interruption.SCREENSAVER,
   Interruption.RELAUNCH_BROWSER,
+  Interruption.WHATS_NEW,
 ];
 
-const INITIAL_INTERRUPTION = 20000;
-const TIME_BETWEEN_INTERRUPTIONS = 10000;
+const TIME_BETWEEN_INTERRUPTIONS = 10_000;
 
 function App() {
   const [currentInterruption, setCurrentInterruption] = useState<Interruption>(
-    Interruption.SCREENSAVER
+    Interruption.WHATS_NEW
   );
   const [currentIndex, setCurrentIndex] = useState(-1);
+  const [showStartButton, setShowStartButton] = useState(true);
 
   const iframeUrl = useMemo(() => {
     const url = new URL(
@@ -64,16 +67,13 @@ function App() {
     return url.toString();
   }, []);
 
-  useEffect(() => {
-    if (currentInterruption !== Interruption.NONE) return;
-    // Start the sequence after 20 seconds
-    const initialTimer = setTimeout(() => {
+  const handleStart = () => {
+    setShowStartButton(false);
+    setTimeout(() => {
       setCurrentIndex(0);
       setCurrentInterruption(INTERRUPTION_ORDER[0]);
-    }, INITIAL_INTERRUPTION);
-
-    return () => clearTimeout(initialTimer);
-  }, []);
+    }, TIME_BETWEEN_INTERRUPTIONS);
+  };
 
   const handleInterruptionClose = () => {
     setCurrentInterruption(Interruption.NONE);
@@ -85,7 +85,7 @@ function App() {
       setCurrentInterruption(
         INTERRUPTION_ORDER[nextIndex % INTERRUPTION_ORDER.length]
       );
-    }, TIME_BETWEEN_INTERRUPTIONS);
+    }, TIME_BETWEEN_INTERRUPTIONS * 0.75 + Math.random() * TIME_BETWEEN_INTERRUPTIONS * 0.5);
   };
 
   const renderInteruption = () => {
@@ -98,6 +98,8 @@ function App() {
         return <TermsAndConditions onRemove={handleInterruptionClose} />;
       case Interruption.SECURITY_KEY:
         return <TouchSecurityKey onRemove={handleInterruptionClose} />;
+      case Interruption.WHATS_NEW:
+        return <WhatsNew onRemove={handleInterruptionClose} />;
       case Interruption.VERTICAL_AD:
         return <VerticalBannerAd onRemove={handleInterruptionClose} />;
       case Interruption.PAYWALL:
@@ -112,12 +114,12 @@ function App() {
         return <AdminPassword onRemove={handleInterruptionClose} />;
       case Interruption.GROUP_CHAT:
         return <GroupChat onRemove={handleInterruptionClose} />;
-      case Interruption.RELAUNCH_BROWSER:
-        return <RelaunchBrowser onRemove={handleInterruptionClose} />;
       case Interruption.EMAIL_NOTIFICATION:
         return <EmailNotification onRemove={handleInterruptionClose} />;
       case Interruption.SCREENSAVER:
         return <Screensaver onRemove={handleInterruptionClose} />;
+      case Interruption.RELAUNCH_BROWSER:
+        return <RelaunchBrowser onRemove={handleInterruptionClose} />;
     }
   };
 
@@ -128,6 +130,9 @@ function App() {
         className={styles.iframe}
         title="Website Content"
       />
+      {showStartButton && (
+        <button className={styles.startButton} onClick={handleStart}></button>
+      )}
       {renderInteruption()}
     </div>
   );
